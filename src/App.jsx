@@ -13,11 +13,25 @@ function App() {
     // selectedBtn => "components", "jsx", "props", "state"
     setSelectedTopic(selectedBtn);
   }
+
+  let tabContent = <p>Please select a topic.</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Header />
+      <Header/>
       <main>
-        <section id="core-concepts">
+      <section id="core-concepts">
           <h2>Time to get started!</h2>
           <ul>
             <CoreConcept
@@ -40,16 +54,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          {!selectedTopic ? <p>Please select a topic.</p> : null}
-          {selectedTopic ? (
-            <div id="tab-content">
-              <h3>{EXAMPLES[selectedTopic].title}</h3>
-              <p>{EXAMPLES[selectedTopic].description}</p>
-              <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-            </div>
-          ) : null}
+          {tabContent}
         </section>
       </main>
     </div>
