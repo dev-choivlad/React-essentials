@@ -28,10 +28,10 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header/>
       <main>
-      <section id="core-concepts">
+        <section id="core-concepts">
           <h2>Time to get started!</h2>
           <ul>
             {CORE_CONCEPTS.map((conceptItem) =>
@@ -48,7 +48,6 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]}/>*/}
           </ul>
         </section>
-
         <section id="examples">
           <h2>Examples</h2>
           <menu>
@@ -79,7 +78,7 @@ function App() {
           {tabContent}
         </section>
       </main>
-    </div>
+    </>
   );
 }
 
